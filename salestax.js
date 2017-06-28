@@ -3,7 +3,7 @@
 //add together numbers in sales arrays for totalSales values
 //calculate tax on that total to get totalTaxes values
 //calling Telus needs to be separated by province key, for different tax rates
-//output one Telus object with totalSales and totalTaxes as keys
+//output one Telus object with totalSales and totalTaxes as keys, need to add them together for [0] and [2]
 //output one Bombardier object with totalSales and totalTaxes as keys - must access as
 //values the results of calculating total tax and sales
 //results should output as object?
@@ -41,7 +41,11 @@ function calculateSalesTax(salesData, taxRates) {
 
    for(var i = 0; i < companySalesData.length; i++){
     var company = companySalesData[i];
-    if( !== undefined)
+    if(companyResultBlock[company["name"]] !== undefined) {
+      companyResultBlock[company["name"]]["totalSales"] += calculateTotalSales(company["sales"])
+      companyResultBlock[company["name"]]["totalTaxes"] += calculateTotalTaxes(company["province"], company["sales"])
+      continue;
+    }
     companyResultBlock[company["name"]] = {
       totalSales: calculateTotalSales(company["sales"]),
       totalTaxes: calculateTotalTaxes(company["province"], company["sales"])
