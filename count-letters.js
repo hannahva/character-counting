@@ -1,10 +1,11 @@
-var input = process.argv.splice(2);
 
 function countLetters(input){
-  var noSpaces = input.toLowerCase().split(" ").join("");
+  var letters = input.split(" ").join("");
+  var result = {};
 
-  var characterReturn = {
-    letter: letter,
-    times: times,
-  };
-} hi
+  for(var i = 0; i < letters.length; i++){
+    if(
+  }
+}
+
+countLetters("lighthouse in the house");
